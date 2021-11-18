@@ -3,5 +3,4 @@ node_modules
 dist
 dist-ssr
 *.local
-
-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
+coverage
