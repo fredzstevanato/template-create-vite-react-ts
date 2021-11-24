@@ -1,68 +1,49 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es6": true,
+    "jest": true
   },
   "extends": [
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
     "airbnb",
-    "prettier"
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
   ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 12,
+    "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": [
-    "prettier",
-    "react",
-    "@typescript-eslint",
-    "eslint-plugin-import-helpers"
-  ],
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
   "rules": {
-    "camelcase": "off",
+    "react/jsx-props-no-spreading": "off",
     "prettier/prettier": "error",
-    "import/no-unresolved": "error",
-    "@typescript-eslint/naming-convention": [
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
-        "selector": "interface",
-        "format": ["PascalCase"],
-        "custom": {
-          "regex": "^I[A-Z]",
-          "match": true
-        }
+        "allowExpressions": true
       }
     ],
-    "class-methods-use-this": "off",
-    "import/prefer-default-export": "off",
-    "no-shadow": "off",
-    "no-console": "off",
-    "no-useless-constructor": "off",
-    "no-empty-function": "off",
-    "lines-between-class-members": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
       {
-        "ts": "never"
+        "ts": "never",
+        "tsx": "never"
       }
-    ],
-    "import-helpers/order-imports": [
-      "warn",
-      {
-        "newlinesBetween": "always",
-        "groups": ["module", "/^@/", ["parent", "sibling", "index"]],
-        "alphabetize": { "order": "asc", "ignoreCase": true }
-      }
-    ],
-    "import/no-extraneous-dependencies": [
-      "error",
-      { "devDependencies": ["**/*.spec.js"] }
     ]
   },
   "settings": {
